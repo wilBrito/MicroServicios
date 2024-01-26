@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="user-microService/src/main/java"/>
+	<classpathentry kind="src" path="user-microService/src/test/java"/>
+	<classpathentry kind="lib" path="user-microService/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="user-microService/target/classes"/>
+</classpath>
