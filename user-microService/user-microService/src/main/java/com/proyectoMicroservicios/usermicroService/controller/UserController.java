@@ -1,6 +1,5 @@
 package com.proyectoMicroservicios.usermicroService.controller;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.proyectoMicroservicios.usermicroService.entity.User;
+import com.proyectoMicroservicios.usermicroService.model.Bike;
+import com.proyectoMicroservicios.usermicroService.model.Car;
 import com.proyectoMicroservicios.usermicroService.service.UserService;
 
 @RestController
@@ -43,6 +44,23 @@ public class UserController {
 	public ResponseEntity<User> save(@RequestBody User user){
 		User userNew = userService.save(user);
 		return ResponseEntity.ok(userNew);
-
+	}
+	
+	@GetMapping("/cars/{userId}")
+	public ResponseEntity<List<Car>> getCars(@PathVariable("userId") int userId){
+		User user = userService.getUserById(userId);
+		if(user == null)
+			return ResponseEntity.notFound().build();
+		List<Car> cars = userService.getCars(userId);
+		return ResponseEntity.ok(cars);
+	}
+	
+	@GetMapping("/bikes/{userId}")
+	public ResponseEntity<List<Bike>> getBikes(@PathVariable("userId") int userId){
+		User user = userService.getUserById(userId);
+		if(user == null)
+			return ResponseEntity.notFound().build();
+		List<Bike> bikes = userService.getBikes(userId);
+		return ResponseEntity.ok(bikes);
 	}
 }
