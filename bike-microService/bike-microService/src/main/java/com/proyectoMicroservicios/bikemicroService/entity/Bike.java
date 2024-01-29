@@ -1,4 +1,4 @@
-package com.proyectoMicroservicios.carmicroService.entity;
+package com.proyectoMicroservicios.bikemicroService.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,8 +14,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 
-@Table(name = "car")
-public class Car {
+@Table(name = "bike")
+public class Bike {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,8 +30,8 @@ public class Car {
 	public String getBrad() {
 		return brand;
 	}
-	public void setBrad(String brad) {
-		this.brand = brad;
+	public void setBrad(String brand) {
+		this.brand = brand;
 	}
 	public String getModel() {
 		return model;
