@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.proyectoMicroservicios.usermicroService.entity.User;
+import com.proyectoMicroservicios.usermicroService.feignClients.CarFeignClient;
 import com.proyectoMicroservicios.usermicroService.model.Bike;
 import com.proyectoMicroservicios.usermicroService.model.Car;
 import com.proyectoMicroservicios.usermicroService.repository.UserRepository;
@@ -19,6 +20,9 @@ public class UserService {
 	
 	@Autowired
 	RestTemplate restTemplate;
+	
+	@Autowired
+	CarFeignClient carFeignClient;
 	
 	public List<User> getAll(){
 		return userRepository.findAll();
@@ -44,5 +48,10 @@ public class UserService {
 		return bikes;
 	}
 	
+	public Car save(int userId, Car car) {
+		car.setUserId(userId);
+		Car carNew = carFeignClient.save(car);
+		return carNew;
+	}
 
 }
